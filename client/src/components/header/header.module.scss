@@ -1,7 +1,6 @@
 .root {
-  background-color: #fff;
+  background-color: black;
   padding: 10px 0;
-  border-bottom: 1px solid #e0e0e0;
   margin-bottom: 30px;
 }
 
@@ -17,13 +16,18 @@
   line-height: 35px;
   text-transform: uppercase;
   letter-spacing: 0.15px;
-  border-radius: 5px;
   padding: 0 10px;
   text-decoration: none;
-
-  &:hover {
-    background-color: #4361ee;
+  border-bottom: 1px solid green;
+  margin-left: 10px;
+  &:hover{
+    transition: 0.3s;
+    transform: scale(1.1);
   }
+}
+
+.sign_buttons{
+  display: inline-flex;
 }
 
 .buttons {

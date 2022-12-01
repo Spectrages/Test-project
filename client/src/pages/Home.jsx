@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {Post} from '../components/post'
 import Grid from '@mui/material/Grid';
 import {useDispatch, useSelector} from "react-redux";
@@ -13,28 +13,28 @@ export const Home = () => {
         dispatch(fetchCharacters());
     }, []);
 
-    if (data) {
-        console.log(data.characters.status)
-    }
     return (
         <React.Fragment>
-            <Grid container spacing={4}>
-                <Grid xs={8} item>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="baseline"
+                >
                     {(isCharactersLoading ? [...Array(20)] : data.characters.items.results).map((obj, index) => isCharactersLoading
                         ? (<Post key={index} isLoading={true}/>)
                         : (<Post
-                            name={obj?.name || ''}
-                            status={obj?.status || ''}
-                            species={obj?.species || ''}
-                            image={obj?.image || ''}
-                            gender={obj?.gender || ''}
-                            location={obj?.location?.name || ''}
-                            episode={obj?.episode || ''}
+                            id={obj.id}
+                            name={obj.name}
+                            image={obj.image}
+                            species={obj.species}
+                            gender={obj.gender}
+                            location={obj.location.name}
+                            episode={obj?.episode}
+                            status={obj.status}
+                            type={obj.type}
                         />))}
                 </Grid>
-                <Grid xs={4} item>
-                </Grid>
-            </Grid>
         </React.Fragment>
     );
 };

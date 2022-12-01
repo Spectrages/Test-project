@@ -4,7 +4,7 @@ export const registerValidation = [
     body('email', 'Invalid mail format').isEmail(),
     body('fullName', 'Enter your name').isLength({min: 2}),
     body('password', 'Password must be at least 6 characters').isLength({min: 6}),
-    body('bio', 'Fill out your bio (minimum 10 characters)').isLength({min: 10}),
+    body('biography', 'Fill out your bio (minimum 10 characters)').isLength({min: 10}),
 ];
 
 export const loginValidation = [

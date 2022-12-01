@@ -10,7 +10,7 @@ function App() {
         <Container maxWidth="lg">
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/posts/:id" element={<FullCharacter />}/>
+            <Route path="/character/:id" element={<FullCharacter />}/>
             <Route path="/register" element={<Registration />}/>
             <Route path="/login" element={<Login />}/>
           </Routes>

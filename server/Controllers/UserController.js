@@ -14,7 +14,7 @@ export const register = async (req, res) => {
             fullName: req.body.fullName,
             email: req.body.email,
             hashPassword: hash,
-            bio: req.body.bio,
+            biography: req.body.biography,
             createdAt: Date.now()
         });
 

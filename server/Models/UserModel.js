@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
             required: true,
             type: String,
         },
-        bio: {
+        biography: {
           required: true,
           type: String,
         },
