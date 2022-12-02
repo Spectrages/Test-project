@@ -5,7 +5,7 @@ import { fetchLogin } from "../../API/userApi";
 
 export const InformPage = () => {
     const dispatch = useDispatch();
-    const userData = useSelector(state => state.auth);
+    const userData = useSelector(state => state.auth.data);
 
     useEffect(() => {
         dispatch(fetchLogin());
