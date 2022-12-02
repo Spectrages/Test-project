@@ -49,11 +49,17 @@ export const Post = ({
                             <span>Gender: {gender}</span>
                             {gender === 'Male'
                                 ? <MaleIcon sx={{color: 'white'}}/>
-                                : <FemaleIcon sx={{color: 'white'}}/>}
+                                : gender === 'Female'
+                                    ? <FemaleIcon sx={{color: 'white'}}/>
+                                    : ''}
                         </div>
                         <span>Last known location: {location}</span>
                         <span>First seen in: {firstEpisode}</span>
-                        <SimpleMenu episode={episode}/>
+                        <SimpleMenu
+                            name={name}
+                            isFullPost={isFullPost}
+                            episode={episode}
+                        />
                     </div>
                 </div>
                 : <Link className={styles.wrapper} to={`/character/${id}`}>

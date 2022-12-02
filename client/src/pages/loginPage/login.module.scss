@@ -1,8 +1,10 @@
+
 .root {
-  width: 400px;
-  padding: 50px;
-  border: 1px solid #dedede;
+  display: grid;
+  border: 1px solid #282c34;
   margin: 50px auto;
+  width: 500px;
+  padding: 45px;
 }
 
 .field {

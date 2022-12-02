@@ -1,0 +1,15 @@
+.block{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 20px;
+}
+
+.biography{
+  margin-top: 10px;
+  border: 2px solid white;
+}
+.text{
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+}

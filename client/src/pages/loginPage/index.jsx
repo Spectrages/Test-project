@@ -3,10 +3,10 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { useForm } from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
+import {Navigate} from 'react-router-dom'
 
 import styles from "./login.module.scss";
 import {fetchAuth, selectIsAuth} from "../../redux/slices/auth";
@@ -19,7 +19,7 @@ export const Login = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isValid },
+        formState: {errors, isValid},
     } = useForm({
         defaultValues: {
             email: '',
@@ -30,21 +30,22 @@ export const Login = () => {
 
     const onSubmit = async (values) => {
         const data = await dispatch(fetchAuth(values));
-        if(!data.payload) {
+        if (!data.payload) {
             alert("Failed to login");
         }
-        if('token' in data.payload) {
-            window.localStorage.setItem('token', data.payload.token)
+        if ('token' in data.payload) {
+            window.localStorage.setItem('token', data.payload.token);
+            window.localStorage.setItem('secondToken', data.payload.token);
         }
     };
 
-    if(isAuth) {
+    if (isAuth) {
         return <Navigate to={'/'}/>
     }
 
     return (
-        <Paper classes={{ root: styles.root }}>
-            <Typography classes={{ root: styles.title }} variant="h5">
+        <Paper classes={{root: styles.root}}>
+            <Typography classes={{root: styles.title}} variant="h5">
                 Login
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +54,7 @@ export const Login = () => {
                     label="E-Mail"
                     error={Boolean(errors.email?.message)}
                     helperText={errors.email?.message}
-                    { ...register('email', { required: 'Enter your email'}) }
+                    {...register('email', {required: 'Enter your email'})}
                     type="email"
                     fullWidth
                 />
@@ -62,7 +63,8 @@ export const Login = () => {
                     label="Password"
                     error={Boolean(errors.password?.message)}
                     helperText={errors.password?.message}
-                    {...register('password', { required: 'Enter your password'})}
+                    {...register('password', {required: 'Enter your password'})}
+                    type="password"
                     fullWidth/>
                 <Button type="submit" disabled={!isValid} size="large" variant="contained" fullWidth>
                     Login

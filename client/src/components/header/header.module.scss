@@ -39,3 +39,21 @@
     text-decoration: none;
   }
 }
+
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+  .text{
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 700;
+    line-height: 35px;
+    text-transform: uppercase;
+    letter-spacing: 0.15px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 2px;
+  }
+}

@@ -1,19 +1,43 @@
 import React, {useEffect, useState} from 'react';
+import axios from "axios";
 import Button from "@mui/material/Button";
-import { Menu } from "@mui/material";
+import {Menu} from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
 
-export const SimpleMenu = ({episode}) => {
+export const SimpleMenu = ({episode, isFullPost, name}) => {
     const [anchorElement, setAnchorElement] = useState(null);
+    const [data, setData] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const handleClick = (event) => {
         setAnchorElement(event.currentTarget);
     };
-
     const handleClose = () => {
         setAnchorElement(null);
     };
 
+    const uploadEpisodesNames = () => {
+        if(isLoaded === false) {
+            if (isFullPost && episode) {
+                let copy = Object.assign([], data);
+                episode.map((item) => {
+                    axios.get(`${item}`)
+                        .then((response) => {
+                            copy.push(response.data.name);
+                            setData(copy);
+                            return response.data.name
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            alert("Error getting article");
+                        });
+                });
+                setIsLoaded(true);
+            }
+        }
+    };
+
+    uploadEpisodesNames();
 
     return (
         <div>
@@ -27,7 +51,7 @@ export const SimpleMenu = ({episode}) => {
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}>
-                Click to open all episodes
+                Click to open all episodes with {name}
             </Button>
             <Menu
                 id="simple-menu"
@@ -36,11 +60,13 @@ export const SimpleMenu = ({episode}) => {
                 open={Boolean(anchorElement)}
                 onClose={handleClose}
             >
-                { episode ? episode.map((item) => {
-                    return(
-                        <MenuItem onClick={handleClose}>{item}</MenuItem>
-                    )
-                })
+                {data.length > 0 ? data.map((item) => {
+                        return (
+                            <MenuItem onClick={handleClose}>
+                                {item}
+                            </MenuItem>
+                        )
+                    })
                     : <MenuItem onClick={handleClose}>--Nothing--</MenuItem>
                 }
 

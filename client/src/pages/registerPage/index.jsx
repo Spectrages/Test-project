@@ -12,10 +12,11 @@ import {useForm} from "react-hook-form";
 export const Registration = () => {
 
     const isAuth = useSelector(selectIsAuth);
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     const {
         register,
+        handleSubmit,
         formState: {errors, isValid},
     } = useForm({
         defaultValues: {
@@ -43,7 +44,7 @@ export const Registration = () => {
 
     return (
         <Paper classes={{root: styles.root}}>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <Typography classes={{root: styles.title}} variant="h5">
                     Create an account
                 </Typography>
@@ -86,7 +87,7 @@ export const Registration = () => {
                     type="Biography"
                     fullWidth
                 />
-                <Button type="submit" size="large" variant="contained" fullWidth>
+                <Button type="submit" disabled={!isValid} size="large" variant="contained" fullWidth>
                     Register
                 </Button>
             </form>
