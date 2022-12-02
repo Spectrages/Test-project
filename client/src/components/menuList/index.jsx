@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './menu.module.scss'
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
@@ -38,7 +39,7 @@ export const SimpleMenu = ({episode, isFullPost, name}) => {
     };
     uploadEpisodesNames();
     return (
-        <div>
+        <div className={styles.root}>
             <Button
                 sx={{
                     color: '#e0e0e0',
@@ -60,7 +61,7 @@ export const SimpleMenu = ({episode, isFullPost, name}) => {
             >
                 {data.length > 0 ? data.map((item, index) => {
                         return (
-                            <MenuItem key={index} onClick={handleClose}>
+                            <MenuItem sx={{background: "lightgray", width: "500px"}} key={index} onClick={handleClose}>
                                 {item}
                             </MenuItem>
                         )
