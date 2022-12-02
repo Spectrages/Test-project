@@ -4,10 +4,10 @@ import Button from "@mui/material/Button";
 import Paper from '@mui/material/Paper';
 import styles from './register.module.scss';
 import TextField from '@mui/material/TextField';
-import {Navigate} from "react-router-dom";
-import {fetchRegister, selectIsAuth} from "../../redux/slices/auth";
-import {useDispatch, useSelector} from "react-redux";
-import {useForm} from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import {fetchRegister, selectIsAuth } from "../../redux/slices/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 
 export const Registration = () => {
 
@@ -20,10 +20,10 @@ export const Registration = () => {
         formState: {errors, isValid},
     } = useForm({
         defaultValues: {
-            biography: '',
             fullName: '',
             email: '',
             password: '',
+            biography: '',
         },
         mode: 'onChange'
     });
@@ -34,7 +34,8 @@ export const Registration = () => {
             alert("Failed to register");
         }
         if ('token' in data.payload) {
-            window.localStorage.setItem('token', data.payload.token)
+            window.localStorage.setItem('token', data.payload.token);
+            window.sessionStorage.setItem('secondToken', data.payload.token);
         }
     };
 
@@ -76,7 +77,6 @@ export const Registration = () => {
                     fullWidth
                 />
                 <TextField
-                    id="outlined-multiline-static"
                     multiline
                     rows={4}
                     className={styles.field}

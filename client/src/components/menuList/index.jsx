@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
-import {Menu} from "@mui/material";
+import { Menu } from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
 
 export const SimpleMenu = ({episode, isFullPost, name}) => {

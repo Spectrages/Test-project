@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
-import {useParams} from "react-router-dom"
-import {Post} from "../components/post/index";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom"
+import { Post } from "../components/post/index";
 import { Navigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -20,12 +20,14 @@ export const FullCharacter = () => {
                             return response.data.name;
                         })
                         .catch((error) => {
+                            console.log(error);
                             return (<Navigate to={`/error`} replace={true}/> );
                         });
 
                     return response.data;
                 })
                 .catch((error) => {
+                    console.log(error);
                     return (<Navigate to={`/error`} replace={true}/> );
                 });
         }, []);

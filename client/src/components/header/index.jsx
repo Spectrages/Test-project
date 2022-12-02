@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import React from 'react';
+import { Link } from "react-router-dom";
 import styles from './header.module.scss';
 import Container from '@mui/material/Container';
 import Checkbox from '@mui/material/Checkbox';
-import {useDispatch, useSelector} from "react-redux";
-import {logout, selectIsAuth} from "../../redux/slices/auth";
-import {changeTrue, changeFalse} from "../../redux/slices/checkbox";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectIsAuth } from "../../redux/slices/auth";
+import { changeTrue, changeFalse } from "../../redux/slices/checkbox";
 import CheckBoxOutlineBlankTwoToneIcon from '@mui/icons-material/CheckBoxOutlineBlankTwoTone';
 import CheckBoxTwoToneIcon from '@mui/icons-material/CheckBoxTwoTone';
-import {fetchLogin} from "../../API/userApi";
 
 export const Header = () => {
     const check = useSelector(state => state.checkbox.check);
@@ -19,7 +18,7 @@ export const Header = () => {
         if (window.confirm('Are you sure you want to logout?')) {
             dispatch(logout());
             window.localStorage.removeItem('token');
-            window.localStorage.removeItem('secondToken');
+            window.sessionStorage.removeItem('secondToken');
         }
     };
 
@@ -29,7 +28,7 @@ export const Header = () => {
             window.localStorage.removeItem('token');
         } else {
             dispatch(changeTrue());
-            let token = window.localStorage.getItem('secondToken');
+            let token = window.sessionStorage.getItem('secondToken');
             window.localStorage.setItem('token', token);
         }
     };

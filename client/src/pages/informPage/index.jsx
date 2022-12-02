@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import styles from "./informPage.module.scss"
-import {useDispatch, useSelector} from "react-redux";
-import {fetchLogin} from "../../API/userApi";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLogin } from "../../API/userApi";
 
 export const InformPage = () => {
     const dispatch = useDispatch();
-    const userData = useSelector(state => state.auth.data);
+    const userData = useSelector(state => state.auth);
 
     useEffect(() => {
         dispatch(fetchLogin());

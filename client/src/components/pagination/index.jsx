@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Pagination} from "@mui/material";
-import {createTheme, ThemeProvider} from "@mui/material";
+import React, { useState } from 'react';
+import { Pagination } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 export const CustomPagination = ({data, onChange}) => {

@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import {Post} from '../components/post'
+import React, { useEffect } from 'react';
+import { Post } from '../components/post'
 import Grid from '@mui/material/Grid';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchCharacters} from "../API/charactersApi";
-import {fetchLogin} from "../API/userApi";
-import {CustomPagination} from "../components/pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCharacters } from "../API/charactersApi";
+import { fetchLogin } from "../API/userApi";
+import { CustomPagination } from "../components/pagination";
 
 export const Home = () => {
     const dispatch = useDispatch();
@@ -19,8 +19,6 @@ export const Home = () => {
         dispatch(fetchCharacters());
         dispatch(fetchLogin());
     }, []);
-
-
 
     return (
         <React.Fragment>
