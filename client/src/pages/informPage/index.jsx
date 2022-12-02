@@ -7,7 +7,7 @@ export const InformPage = () => {
     const dispatch = useDispatch();
     const userData = useSelector(state => state.auth.data);
 
-    useEffect(() =>{
+    useEffect(() => {
         dispatch(fetchLogin());
     },[]);
 
@@ -18,7 +18,6 @@ export const InformPage = () => {
             <div className={styles.biography}>
                 <span className={styles.text}>{userData?.biography || ''}</span>
             </div>
-
         </div>
     );
 };

@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import { Navigate } from "react-router-dom";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import {Menu} from "@mui/material";
@@ -28,17 +29,14 @@ export const SimpleMenu = ({episode, isFullPost, name}) => {
                             return response.data.name
                         })
                         .catch((error) => {
-                            console.error(error);
-                            alert("Error getting article");
+                            return (<Navigate to={`/error`} replace={true} />);
                         });
                 });
                 setIsLoaded(true);
             }
         }
     };
-
     uploadEpisodesNames();
-
     return (
         <div>
             <Button
@@ -60,9 +58,9 @@ export const SimpleMenu = ({episode, isFullPost, name}) => {
                 open={Boolean(anchorElement)}
                 onClose={handleClose}
             >
-                {data.length > 0 ? data.map((item) => {
+                {data.length > 0 ? data.map((item, index) => {
                         return (
-                            <MenuItem onClick={handleClose}>
+                            <MenuItem key={index} onClick={handleClose}>
                                 {item}
                             </MenuItem>
                         )

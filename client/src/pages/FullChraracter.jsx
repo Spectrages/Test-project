@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom"
 import {Post} from "../components/post/index";
-import {ReactMarkdown} from "react-markdown/lib/react-markdown";
+import { Navigate } from "react-router-dom";
 import axios from 'axios'
 
 export const FullCharacter = () => {
@@ -20,15 +20,13 @@ export const FullCharacter = () => {
                             return response.data.name;
                         })
                         .catch((error) => {
-                            console.error(error);
-                            alert("Error getting article");
+                            return (<Navigate to={`/error`} replace={true}/> );
                         });
 
                     return response.data;
                 })
                 .catch((error) => {
-                    console.error(error);
-                    alert("Error getting article");
+                    return (<Navigate to={`/error`} replace={true}/> );
                 });
         }, []);
 
