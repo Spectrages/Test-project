@@ -23,7 +23,6 @@ export const FullCharacter = () => {
                             console.log(error);
                             return (<Navigate to={`/error`} replace={true}/> );
                         });
-
                     return response.data;
                 })
                 .catch((error) => {
